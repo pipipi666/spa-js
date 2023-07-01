@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  background-color: #d4cece;
+}
+
+.nav {
+  height: 100%;
+}
+
+.ul {
+  height: 100%;
+  display: flex;
+  list-style-type: none;
+}
+
+.li {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.a {
+  font-size: 20px;
+  color: #423b3b;
+  text-decoration: none;
+}
+
+.a:hover {
+  color: #9e6a6a;
+}
+
+.map {
+  width: 100%;
+  height: calc(100vh - 80px);
+}
