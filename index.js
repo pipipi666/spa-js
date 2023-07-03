@@ -7,7 +7,7 @@ const intervalHandler = (el) => {
   el.textContent = Math.floor((new Date() - start) / 1000) + " seconds";
 };
 
-const yReady = () => {
+const drawMap = () => {
   const mapEl = document.querySelector(".map");
   if (!mapEl) return;
   mapEl.textContent = "";
@@ -45,9 +45,7 @@ const handleLocation = async () => {
   }
 
   if (page === "map") {
-    if (ymaps) {
-      ymaps.ready(yReady());
-    }
+    ymaps.ready(drawMap);
   }
 };
 
