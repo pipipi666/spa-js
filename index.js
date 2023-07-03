@@ -31,7 +31,7 @@ const handleLocation = async () => {
     page = "activity";
   }
 
-  const html = await fetch(`${page}.html`).then((data) => data.text());
+  const html = await fetch(`${page}-page.html`).then((data) => data.text());
   main.innerHTML = html;
 
   if (page === "time") {
