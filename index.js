@@ -7,7 +7,9 @@ const intervalHandler = (el) => {
   el.textContent = Math.floor((new Date() - start) / 1000) + " seconds";
 };
 
-const yReady = (mapEl) => {
+const yReady = () => {
+  const mapEl = document.querySelector(".map");
+  if (!mapEl) return;
   mapEl.textContent = "";
   const mapLocation = new ymaps.Map("map", {
     center: coords,
@@ -31,7 +33,7 @@ const handleLocation = async () => {
     page = "activity";
   }
 
-  const html = await fetch(`${page}-page.html`).then((data) => data.text());
+  const html = await fetch(`pages/${page}.html`).then((data) => data.text());
   main.innerHTML = html;
 
   if (page === "time") {
@@ -43,9 +45,8 @@ const handleLocation = async () => {
   }
 
   if (page === "map") {
-    const mapEl = document.querySelector(".map");
-    if (mapEl) {
-      ymaps.ready(yReady(mapEl));
+    if (ymaps) {
+      ymaps.ready(yReady());
     }
   }
 };
