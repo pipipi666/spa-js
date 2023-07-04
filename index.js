@@ -10,11 +10,12 @@ const intervalHandler = (el) => {
 const drawMap = () => {
   const mapEl = document.getElementById("map");
   if (!mapEl) return;
-  mapEl.textContent = "";
+
   const mapLocation = new ymaps.Map("map", {
     center: coords,
     zoom: 10,
   });
+
   if (mapLocation) {
     const placemark = new ymaps.Placemark(
       coords,
@@ -24,6 +25,7 @@ const drawMap = () => {
       }
     );
     mapLocation.geoObjects.add(placemark);
+    mapEl.textContent = "";
   }
 };
 
