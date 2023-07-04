@@ -25,7 +25,9 @@ const drawMap = () => {
       }
     );
     mapLocation.geoObjects.add(placemark);
-    mapEl.textContent = "";
+
+    const loader = document.getElementById("loader");
+    loader.style.display = "none";
   }
 };
 
