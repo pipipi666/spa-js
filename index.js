@@ -1,4 +1,4 @@
-const main = document.querySelector(".main");
+const main = document.getElementById("main");
 const start = new Date();
 const coords = [55.76, 37.64];
 let interval;
@@ -8,7 +8,7 @@ const intervalHandler = (el) => {
 };
 
 const drawMap = () => {
-  const mapEl = document.querySelector(".map");
+  const mapEl = document.getElementById("map");
   if (!mapEl) return;
   mapEl.textContent = "";
   const mapLocation = new ymaps.Map("map", {
@@ -37,7 +37,7 @@ const handleLocation = async () => {
   main.innerHTML = html;
 
   if (page === "time") {
-    const el = document.querySelector(".time");
+    const el = document.getElementById("time");
     intervalHandler(el);
     interval = setInterval(() => intervalHandler(el), 1000);
   } else {
@@ -50,14 +50,15 @@ const handleLocation = async () => {
 };
 
 const linkClick = (e) => {
-  if (e.target.tagName !== "A") return;
   e.preventDefault();
   history.pushState(null, null, e.target.href);
   handleLocation();
 };
 
-const nav = document.querySelector(".nav");
-nav.addEventListener("click", linkClick);
+const links = document.querySelectorAll("a");
+links.forEach((link) => {
+  link.addEventListener("click", linkClick);
+});
 
 window.addEventListener("popstate", handleLocation);
 handleLocation();
